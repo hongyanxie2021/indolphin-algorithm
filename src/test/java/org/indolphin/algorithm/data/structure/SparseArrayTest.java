@@ -1,4 +1,4 @@
-package org.indolphin.algorithm.test;
+package org.indolphin.algorithm.data.structure;
 
 import org.junit.Test;
 
