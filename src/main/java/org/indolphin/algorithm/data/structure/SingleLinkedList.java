@@ -1,5 +1,7 @@
 package org.indolphin.algorithm.data.structure;
 
+import java.security.PublicKey;
+
 /**
  * 单链表
  * @author hongyan
@@ -13,7 +15,7 @@ public class SingleLinkedList {
 
     public SingleLinkedList() {
         // 初始化头结点，头结点为空
-        this.header = new LinkedNode(null, null);
+        this.header = new LinkedNode(null, null,null);
     }
 
     /**
@@ -38,9 +40,9 @@ public class SingleLinkedList {
         LinkedNode temp = header;
         boolean flag = false;
         while (temp.next != null) {
-            if(temp.next.data > node.data) {
+            if(temp.next.id > node.id) {
                 break;
-            } else if(temp.next.data == node.data) {
+            } else if(temp.next.id.equals(node.id)) {
                 flag = true;
                 break;
             }
@@ -56,13 +58,38 @@ public class SingleLinkedList {
     }
 
     /**
+     * 更新节点
+     * @param node 要更新的节点
+     */
+    public void update(LinkedNode node) {
+        if(header.next == null) {
+            return;
+        }
+        LinkedNode temp = header.next;
+        boolean flag = false;
+        while (temp != null) {
+            if(temp.id.equals(node.id)) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(flag) {
+            temp.name = node.name;
+        } else {
+            throw new RuntimeException("队列中不存在该节点");
+        }
+    }
+
+    /**
      * show the data info in current linked list
      */
     public void list() {
         LinkedNode temp = header.next;
         while (temp != null) {
-            System.out.println(temp.data);
+            System.out.println(temp.id + " " + temp.name);
             temp = temp.next;
         }
+        System.out.println("-------------------------------");
     }
 }

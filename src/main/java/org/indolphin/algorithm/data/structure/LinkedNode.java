@@ -10,15 +10,17 @@ public class LinkedNode {
     /**
      * 保存节点数据
      */
-    public Integer data;
+    public Integer id;
+    public String name;
 
     /**
      * 保存下一个节点
      */
     public LinkedNode next;
 
-    public LinkedNode(Integer data, LinkedNode node) {
-        this.data = data;
+    public LinkedNode(Integer id, String name, LinkedNode node) {
+        this.id = id;
+        this.name = name;
         this.next = node;
     }
 
