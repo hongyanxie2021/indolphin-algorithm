@@ -32,7 +32,10 @@ public class SingleLinkedListTest {
         linkedList.list();
         linkedList.update(new LinkedNode(5, "石破天", null));
         linkedList.list();
-        linkedList.addByOrder(node9);
+
+        linkedList.delete(new LinkedNode(1, "", null));
+        linkedList.list();
+        //linkedList.addByOrder(node9);
 
     }
 }

@@ -82,6 +82,27 @@ public class SingleLinkedList {
     }
 
     /**
+     * delete specific node
+     * @param node node needed to be deleted
+     */
+    public void delete(LinkedNode node) {
+        LinkedNode temp = header;
+        boolean flag = false;
+        while (temp.next != null) {
+            if(temp.next.id == node.id) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(flag) {
+            temp.next = temp.next.next;
+        } else {
+            throw new RuntimeException("队列中不存在该节点");
+        }
+    }
+
+    /**
      * show the data info in current linked list
      */
     public void list() {
