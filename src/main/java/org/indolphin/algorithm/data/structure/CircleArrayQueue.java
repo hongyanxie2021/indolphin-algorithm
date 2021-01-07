@@ -1,6 +1,5 @@
 package org.indolphin.algorithm.data.structure;
 
-import org.indolphin.algorithm.exception.ItemFullException;
 
 /**
  * 环形数组模拟队列，是对ArrayQueue的改进
@@ -40,7 +39,7 @@ public class CircleArrayQueue<T> {
      */
     public void add(T item) {
         if(isFull()) {
-            throw new ItemFullException();
+            throw new RuntimeException("队列已满");
         }
 
         this.data[this.rear] = item;

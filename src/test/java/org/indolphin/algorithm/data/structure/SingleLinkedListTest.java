@@ -35,6 +35,11 @@ public class SingleLinkedListTest {
 
         linkedList.delete(new LinkedNode(1, "", null));
         linkedList.list();
+
+/*        linkedList.reverse();
+        linkedList.list();*/
+        linkedList.reversePrint();
+        linkedList.list();
         //linkedList.addByOrder(node9);
 
     }

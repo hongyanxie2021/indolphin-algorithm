@@ -1,6 +1,7 @@
 package org.indolphin.algorithm.data.structure;
 
 import java.security.PublicKey;
+import java.util.Stack;
 
 /**
  * 单链表
@@ -103,6 +104,91 @@ public class SingleLinkedList {
     }
 
     /**
+     * 统计链表中节点的数量
+     * @return 链表节点数
+     */
+    public int size() {
+        if(header.next == null) {
+            return 0;
+        }
+        LinkedNode temp = header.next;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
+
+    /**
+     * 获取倒数第index个节点
+     * @param index 索引
+     * @return 节点
+     */
+    public LinkedNode findLastIndexOf(int index) {
+        if(header.next == null) {
+            return null;
+        }
+        int size = size();
+        if(index <=0 || index > size) {
+            return null;
+        }
+        int count = size - index;
+        LinkedNode temp = header.next;
+        while (count > 0) {
+            temp = temp.next;
+            count--;
+        }
+        return temp;
+    }
+
+    /**
+     * 链表逆转
+     * 1、先定义一个节点reverseHeader = new LinkedNode()
+     * 2、从头到尾遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHeader的最前端
+     * 3、原来的链表header.next = reverseHeader.next
+     */
+    public void reverse() {
+        if(header.next == null || header.next.next == null) {
+            // 链表为空或者只有一个节点
+            return;
+        }
+        LinkedNode current = header.next;
+        LinkedNode next = null;
+        LinkedNode reverseHeader = new LinkedNode(0, null,null);
+        while (current != null) {
+            // 取出 current.next以备后面使用，防止链表断掉
+            next = current.next;
+            // 将current放入reverseHeader的后面
+            current.next = reverseHeader.next;
+            reverseHeader.next = current;
+            // current 后移
+            current = next;
+        }
+        header = reverseHeader;
+    }
+
+    /**
+     * 逆序打印链表节点
+     */
+    public void reversePrint() {
+        if(header.next == null) {
+            return;
+        }
+        Stack<LinkedNode> stack = new Stack<>();
+        LinkedNode current = header.next;
+        while (current != null) {
+            stack.push(current);
+            current = current.next;
+        }
+
+        while (!stack.empty()) {
+            LinkedNode node = stack.pop();
+            System.out.println(node.id + " " + node.name);
+        }
+    }
+
+    /**
      * show the data info in current linked list
      */
     public void list() {
@@ -112,5 +198,17 @@ public class SingleLinkedList {
             temp = temp.next;
         }
         System.out.println("-------------------------------");
+    }
+
+    /**
+     * 合并两个有序链表
+     * 思路： 类似链表反转
+     * 1、新建一个链表 LinkedNode newHeader = new LinkedNode()
+     * 2、比较两个链表的current，较小者放入newHeader链表
+     * 3、header = newHeader.next
+     * @param otherHeader 另一个链表头节点
+     */
+    public void merge(LinkedNode otherHeader) {
+        // TODO
     }
 }
