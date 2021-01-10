@@ -1,7 +1,5 @@
 package org.indolphin.algorithm.data.structure;
 
-import org.indolphin.algorithm.exception.ItemFullException;
-
 /**
  * 基于数组实现队列
  * @author hongyan
@@ -52,7 +50,7 @@ public class ArrayQueue<T> {
      */
     public void add(T item) {
         if(isFull()) {
-            throw new ItemFullException();
+            throw new RuntimeException("队列已满");
         }
 
         this.data[++rear] = item;
