@@ -18,9 +18,11 @@ public class SelectionSort {
                 }
             }
             // 交换
-            int temp = data[min];
-            data[min] = data[i];
-            data[i] = temp;
+            if(min != i) {
+                int temp = data[min];
+                data[min] = data[i];
+                data[i] = temp;
+            }
         }
         return data;
     }
