@@ -10,12 +10,14 @@ public class InsertSort {
 
     public int[] sort(int[] data) {
         for(int i=1;i<data.length;i++) {
-            int j = i;
-            while (j> 0 && data[j] < data[j-1]) {
-                int temp = data[j];
-                data[j] = data[j-1];
-                data[j] = temp;
-                j--;
+            int num = data[i];
+            int index = i;
+            while (index > 0 && num < data[index-1]) {
+                data[index] = data[index-1];
+                index--;
+            }
+            if(index != i) {
+                data[index] = num;
             }
         }
         return data;
