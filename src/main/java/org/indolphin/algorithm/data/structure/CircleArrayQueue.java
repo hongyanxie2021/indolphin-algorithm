@@ -1,6 +1,5 @@
 package org.indolphin.algorithm.data.structure;
 
-
 /**
  * 环形数组模拟队列，是对ArrayQueue的改进
  * @author hongyan
